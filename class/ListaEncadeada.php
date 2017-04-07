@@ -53,17 +53,32 @@
 
         public function buscar($posicao){
             if(!$this->verificaPosicaoValida($posicao)){
-                return "null";
+                return null;
             }
 
             return $this->coletaCelula($posicao)->getElemento();
         }
 
+        public function buscaPorElemento($elemento){
+            
+            $atual = $this->primeira;
+
+            for($i = 0;$i<$this->tamanho;$i++){
+                if($atual->getElemento() == $elemento){
+                    return true;
+                }
+
+                $atual = $atual->getProxima();
+            }
+            return false;
+        }
+
         public function removeComeco(){
             if($this->tamanho == 0){
-                return false;
+                return "Não há elementos na lista";
             }
 
+            $resultado = $this->primeira->getElemento();
             $this->primeira = $this->primeira->getProxima();
             $this->tamanho --;
 
@@ -71,7 +86,7 @@
                 $this->ultima = null;
             }
 
-            return true;
+            return $resultado;
         }
 
         public function tamanho(){
