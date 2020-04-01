@@ -29,13 +29,13 @@ int tamanhoDaPilha(PILHA* P){
     return P->numeroReg;
 }
 
-bool empilha(PILHA* P, TIPO R){
+bool empilha(PILHA* P, TIPO element){
 
     if(pilhaEstaCheia(P)){
         return false;
     } 
-    printf("Empilhando: %d\n",R);
-    P->NUM[P->numeroReg].num = R;
+    printf("Empilhando: %d\n",element);
+    P->NUM[P->numeroReg].num = element;
     P->numeroReg++;
     return true;
     
@@ -60,10 +60,10 @@ void desempilhaTudo(PILHA* P){
             P->NUM[tamanho].num = -1;
         }
         P->numeroReg = 0;
-        printf("Pilha vazia! \n");
+        printf("Pilha vazia!\n");
         
     }else{
-        printf("Não há registros na Pilha!\n");
+        printf("Nao ha registros na Pilha!\n");
     }
 }
 
@@ -82,7 +82,7 @@ int buscaNaPilha(PILHA* P, TIPO element){
 
 void mostraPilha(PILHA* P){
     int i=0;
-    printf("Pilha: \n");
+    printf("Pilha:\n");
 
     if(P->numeroReg > 0){
         for(i;i<P->numeroReg;i++){
